@@ -1,0 +1,14 @@
+package com.kosta.exam;
+
+public class CharacterIntTest {
+
+	public static void main(String[] args) {
+		int data = 65;
+		System.out.println(data);
+		System.out.println((char)data);
+		System.out.println((char)(data+1));
+		System.out.println((char)(data+2));
+
+	}
+
+}

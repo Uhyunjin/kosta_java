@@ -1,0 +1,80 @@
+package com.kosta.exam;
+
+import java.util.Scanner;
+
+public class SajuPalja {
+
+	
+	public static void getSaju(String name, int year, int month, int day, int hour) {
+		String []animals = {"신","유","술","해","자","축","인","묘","진","사","오","미"};
+		String []fortune = {"천역 : 귀인 대접",
+							"천간 : 액땜",
+							"천수 : 권력, 리더십",
+							"천명 : 파동이 있어요, 해외 이주",
+							"천귀 : 인간성, 법 없이도 살 사람",
+							"천액 : 머리가 좋음",
+							"천권 : 복을 갖고태어남",
+							"천파 : 외로움을 많이 타요",
+							"천인 : 역마살, 다방면에 관심",
+							"천문 : 이성에게 매력있음",
+							"천복 : 손재주가 있어요.",
+							"천고 : 명이 길어요"};
+		// 나머지 4 = 자
+		// 나머지 0 = 신
+
+		// 생년을 12로 나눈 나머지
+		int res1 = year%12;
+		//띠
+		///String yearAnimal = animals[res];
+		
+		//띠 + 생월
+		int res2 =  (res1+month-1)%12;
+		//String monthAnimal = animals[res2];
+		
+		//월 + 일
+		int res3 = (res2+day-1)%12;
+		//String dayAnimal = animals[res3];
+		
+		//일 + 시
+		//시간은 1~12까지 숫자로 입력받는다
+		int res4 = (res3+(hour/2))%12;
+		//String hourAnimal = animals[res4];
+		
+		System.out.println("*** "+name+" 님의 사주입니다 ***");
+		System.out.println("태어난 해는 " + animals[res1] +"입니다.");
+		System.out.println("=> "+fortune[res1]);
+		System.out.println("태어난 월은 " + animals[res2] +"입니다.");
+		System.out.println("=> "+fortune[res2]);
+		System.out.println("태어난 일은 " + animals[res3] +"입니다.");
+		System.out.println("=> "+fortune[res3]);
+		System.out.println("태어난 시간은 " + animals[res4] +"입니다.");
+		System.out.println("=> "+fortune[res4]);
+		
+		for (int i = 0; i < fortune.length; i+=2) {
+			
+		}
+		
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("이름을 입력해주세요 : ");
+		String name = sc.next();
+		System.out.print("태어난 연도를 입력해주세요 : ");
+		int year= sc.nextInt();
+		System.out.print("태어난 월을 입력해주세요 : ");
+		int month = sc.nextInt();
+		System.out.print("태어난 일자를 입력해주세요 : ");
+		int day = sc.nextInt();
+		System.out.print("태어난 시간을 입력해주세요(24시간 기준 0시-자정 12시-정오) : ");
+		int hour = sc.nextInt();
+		
+		getSaju(name, year, month, day, hour);
+		
+	}
+
+}

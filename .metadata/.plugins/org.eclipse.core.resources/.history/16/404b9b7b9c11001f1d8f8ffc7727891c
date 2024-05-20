@@ -1,0 +1,28 @@
+package com.kosta.exam;
+
+
+public class MethodTest2 {
+	public static void sayHello(String name) {
+		System.out.println("hello "+name);
+		System.out.println("hello "+name);
+		System.out.println("hello "+name);
+		return; // => 안 써줘도 생략된것으로 판단한다.
+	}
+
+	public static void main(String[] args) {
+		sayHello("summer");
+		
+		String title = "KOSTA EDU CENTER";
+		System.out.println(title);
+		
+		sayHello("summer");
+		
+		int year = 2024;
+		System.out.println(year);
+		
+		sayHello("summer");
+
+	}
+
+}
+

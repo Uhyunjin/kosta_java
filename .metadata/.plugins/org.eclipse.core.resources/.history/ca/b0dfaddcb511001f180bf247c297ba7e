@@ -1,0 +1,16 @@
+package com.kosta.exam;
+
+public class MethodAddReturn {
+	
+	public static int getAdd(int a, int b) {
+		int add  = a + b;
+		return add;
+	}
+
+	public static void main(String[] args) {
+		
+		int result = getAdd(30,40);
+		System.out.println(result);
+	}
+
+}

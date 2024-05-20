@@ -1,0 +1,6 @@
+package com.kosta.exam;
+
+public class CharaterIntTest {
+	int data = 65;
+	System.out.println(data);
+}

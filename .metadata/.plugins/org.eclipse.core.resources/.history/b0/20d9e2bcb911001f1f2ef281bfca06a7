@@ -1,0 +1,17 @@
+package com.kosta.exam;
+public class MethodEqualsArray {
+	
+	public static boolean check(double a, double b) {
+		boolean flag = false;
+		if (a==b) {
+			flag = true;
+		}
+		return flag;
+	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println(check(2,2));
+	}
+
+}

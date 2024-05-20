@@ -1,0 +1,8 @@
+package com.kosta.exam27;
+
+public class FamilyTest {
+	public static void main(String[] args) {
+		Family.addr = "서울시 종로구 관철동";
+		System.out.println(Family.addr);
+	}
+}

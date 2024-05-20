@@ -1,0 +1,13 @@
+package com.kosta.exam;
+
+public class primitiveTypeAndArray {
+
+	public static void main(String[] args) {
+		int age1 = 20;
+		double height = 185.9;
+		int []data1 = {10,20,30,40,50};
+		int []data2 = {10,20,30,40,50};
+		int age2 = 20;
+	}
+
+}

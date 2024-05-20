@@ -1,0 +1,35 @@
+package com.kosta.exam08;
+
+public class Round extends Shape{
+	private int r;
+
+	public Round() {}
+	public Round(int x, int y, int r) {
+		super(x, y);
+		this.r = r;
+	}
+	public Round(int r) {
+		this.r = r;
+	}
+	@Override
+	public void calcArea() {
+		area = (r*r)*3.14;
+	}
+
+	@Override
+	public void calcRound() {
+		round = 2*r*3.14;
+	}
+	public int getR() {
+		return r;
+	}
+	public void setR(int r) {
+		this.r = r;
+	}
+	@Override
+	public String toString() {
+		return "Round [r=" + r + ", x=" + x + ", y=" + y + ", area=" + area + ", round=" + round + "]";
+	}
+	
+	
+}

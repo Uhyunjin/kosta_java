@@ -1,0 +1,12 @@
+package com.kosta.exam23;
+
+public class RandomTest {
+
+	public static void main(String[] args) {
+		double data= Math.random();
+		int n = (int)data*6;
+		System.out.println(n);
+		//0<=data<1
+	}
+
+}
