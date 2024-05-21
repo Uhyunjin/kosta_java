@@ -14,7 +14,8 @@ public abstract class ThreeDimShape extends Shape {
 	//이건 하위 클래스 생성자가 매개변수 있는 생성자를 만들어놨기 때문
 	
 	public ThreeDimShape() {
-		super();
+		//super(); => 생략해도 있는거랑 마찬가지
+		
 		// TODO Auto-generated constructor stub
 	}//이거 없으면 왜 오류나지????
 	//얘가 없으면 기본생성자가 없음
