@@ -1,7 +1,0 @@
-package com.kosta.exam03;
-
-import com.kosta.exam02.A;
-
-public class B extends A {
-
-}

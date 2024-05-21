@@ -1,5 +1,0 @@
-package com.kosta.exam08;
-
-public class Rect extends Shape {
-
-}
