@@ -1,4 +1,4 @@
-package com.kosta.exam07;
+package com.kosta.exam02;
 
 public class HourlyEmployee extends Employee{
 	
@@ -30,10 +30,10 @@ public class HourlyEmployee extends Employee{
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-//	@Override
-//	protected void computeSalary() {
-//		salary = hourlyRate * workingHour;
-//	}
+	@Override
+	protected void computeSalary() {
+		salary = hourlyRate * workingHour;
+	}
 	@Override
 	public String toString() {
 		return "HourlyEmployee [salary=" + salary + ", hourlyRate=" + hourlyRate + ", workingHour=" + workingHour

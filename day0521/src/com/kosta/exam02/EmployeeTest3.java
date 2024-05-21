@@ -1,4 +1,4 @@
-package com.kosta.exam07;
+package com.kosta.exam02;
 import java.util.Scanner;
 
 public class EmployeeTest3 {

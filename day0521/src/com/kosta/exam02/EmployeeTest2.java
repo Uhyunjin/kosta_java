@@ -1,7 +1,7 @@
-package com.kosta.exam07;
+package com.kosta.exam02;
 import java.util.Scanner;
 
-public class EmployeeTest3 {
+public class EmployeeTest2 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -10,13 +10,16 @@ public class EmployeeTest3 {
 		String name="", no="";
 		
 		while(true) {
-			do {
+			
+			while(true) {
 				System.out.println("사원의 급여 종류를 입력해주세요");
 				System.out.println("[0]종료\t[1]월급제\t[2]시간제");
 				type = sc.nextInt();
-			} while (type<0 || type>2);
-			
-			
+				
+				if (type>=0 && type<=2) {
+					break;
+				}
+			}
 			if (type==0) {
 				break;
 			}
@@ -54,9 +57,8 @@ public class EmployeeTest3 {
 		}//end while
 		System.out.println("작업종료");
 		
-		int n = i;
-		for (i = 0; i < n; i++) {
-			System.out.println(employee[i]);
+		for (int j = 0; j < i; j++) {
+			System.out.println(employee[j]);
 			
 		}//end for
 	}//end main

@@ -13,9 +13,7 @@ public class EmployeeTest2 {
 			
 			while(true) {
 				System.out.println("사원의 급여 종류를 입력해주세요");
-				System.out.println("[0] 종료");
-				System.out.println("[1] 월급제");
-				System.out.println("[2] 시간제");
+				System.out.println("[0]종료\t[1]월급제\t[2]시간제");
 				type = sc.nextInt();
 				
 				if (type>=0 && type<=2) {
