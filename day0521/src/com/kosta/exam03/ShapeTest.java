@@ -68,7 +68,7 @@ public class ShapeTest {
 		}//end while
 		for (int i = 0; i < n; i++) {
 			if(array[i] instanceof TwoDimShape) {
-//				array[i].calcArea();
+				//array[i].calcArea();
 				//부모의 참조변수를 가지고 자식의 객체를 생성할 수는 있지만
 				//자식에게 새로 추가된 메서드를 바로 호출할 수는 없다
 				//자식의 새로운 메서드를 호출하기 위해서는 type casting 즉 형변환이 필요하다
