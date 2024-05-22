@@ -18,7 +18,7 @@ public class Poet extends Book {
 
 	@Override
 	public String toString() {
-		return "Novel [lateFees=" + lateFees + ", no=" + no + ", title=" + title + ", author=" + author + "]";
+		return "Poet [lateFees=" + lateFees + ", no=" + no + ", title=" + title + ", author=" + author + "]";
 	}
 
 
