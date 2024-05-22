@@ -33,3 +33,10 @@ hs_err_pid*
 replay_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/java
+day0522/.settings/
+
+day0522/.project
+
+day0522/.classpath
+
+day0522/src/module-info.java
