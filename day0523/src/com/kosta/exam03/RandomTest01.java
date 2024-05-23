@@ -30,9 +30,7 @@ public class RandomTest01 {
 		//방법4
 		long data4 = System.currentTimeMillis()%10 +1;
 		System.out.println(data4);
-		
-		
-		
+	
 	}
 
 }
