@@ -5,16 +5,15 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class LottoTest {
+public class LottoTest2 {
 
 	public static void main(String[] args) {
 		Set s = new TreeSet();
 		Random r = new Random();	
 		
-		do {
+		for (int i = 0; s.size()<6; i++) {
 			s.add(r.nextInt(45)+1);
-		} while (s.size()<6);
-
+		}
 		System.out.println(s);
 		System.out.println(s.size());
 	}
