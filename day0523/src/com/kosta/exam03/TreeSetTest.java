@@ -14,7 +14,7 @@ public class TreeSetTest {
 		data.add("김치찌개");
 		boolean f1 = data.add("짬뽕"); //중복이기 때문에 실패
 		System.out.println(data);
-		//[김치찌개, 된장찌개, 백반, 짬뽕] 가나다 정렬!
+		//[김치찌개, 된장찌개, 백반, 짬뽕] 가나다 정렬
 		System.out.println(f1);
 		
 	}
