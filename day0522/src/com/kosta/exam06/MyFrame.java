@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
-class MyFrame extends JFrame implements MouseListener{
+class MyFrame extends Frame implements MouseListener{
 
 	public MyFrame(String title) {
 		super(title);
