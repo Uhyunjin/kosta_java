@@ -1,3 +1,4 @@
+package com.kosta.exam03;
 import java.util.Scanner;
 
 class NegativeBalanceException extends Exception
@@ -39,20 +40,40 @@ class BankAccount
 
 class BankAccountTest
 {
+	public static void menu() {
+		System.out.println("[1]입금 [2]출금 [3]잔액조회 [0]나가기");
+	}
 
 	public static void main(String[] args) 
 	{	
 		double money;
 		Scanner sc = new Scanner(System.in);
 		BankAccount a = new BankAccount("a",0);
+		int sel;
 		try
 		{
-			System.out.println("얼마를 입금하시나요?");
-			money = sc.nextDouble();
-			a.deposit(money);
-			System.out.println("얼마를 출금하시나요?");
-			money = sc.nextDouble();
-			a.withdraw(money);
+			while(true) {
+				menu();
+				sel = sc.nextInt();
+				
+				if (sel==0) {
+					break;
+				}
+				switch (sel) {
+				case 1:
+					System.out.println("얼마를 입금하시나요?");
+					money = sc.nextDouble();
+					a.deposit(money);
+					break;
+				case 2:
+					System.out.println("얼마를 출금하시나요?");
+					money = sc.nextDouble();
+					a.withdraw(money);
+					break;
+				case 3:
+					System.out.println(a.balance);
+				}
+			}
 		}
 		catch (NegativeBalanceException e)
 		{

@@ -1,3 +1,4 @@
+package com.kosta.exam01;
 import java.util.Scanner;
 class HarmonicMeanTest02 
 {	//조화평균이 있을 수 없는 사용자 정의 예외를 만들기
