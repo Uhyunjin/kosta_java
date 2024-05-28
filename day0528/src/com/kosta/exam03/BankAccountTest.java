@@ -77,8 +77,9 @@ class BankAccountTest
 		}
 		catch (NegativeBalanceException e)
 		{
-			System.out.println(e);
-			e.printStackTrace();
+			System.out.println("예외발생 "+e.getMessage());
+			//System.out.println(e);
+			//e.printStackTrace();
 		}
 		
 	}
