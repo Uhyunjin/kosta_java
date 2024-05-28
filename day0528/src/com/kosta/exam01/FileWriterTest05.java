@@ -18,7 +18,8 @@ class FileWriterTest05
 		try{
 		pro("c:/daka/hello.txt");
 		}catch(IOException e){
-			System.out.println(e.getMessage());
+			//System.out.println(e.getMessage());
+			System.out.println(e);
 		}
 	}
 }
