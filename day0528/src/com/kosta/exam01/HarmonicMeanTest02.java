@@ -12,25 +12,25 @@ class HarmonicMeanTest02
 	public static void main(String[] args) 
 	{
 		try{
-		Scanner sc = new Scanner(System.in);
-		int a, b, mean;
+			Scanner sc = new Scanner(System.in);
+			int a, b, mean;
 
-		System.out.println("첫번째 수 입력 : ");
-		a = sc.nextInt();
+			System.out.println("첫번째 수 입력 : ");
+			a = sc.nextInt();
 
-		System.out.println("두번째 수 입력 : ");
-		b = sc.nextInt();
+			System.out.println("두번째 수 입력 : ");
+			b = sc.nextInt();
 
-		if (a==-b)
-		{
-			throw new NotHarmonicMeanException(a+"와 "+b+"의 조화평균은 있을 수 없어요");
-		}
+			if (a==-b)
+			{
+				throw new NotHarmonicMeanException(a+"와 "+b+"의 조화평균은 있을 수 없어요");
+			}
 
-		mean = (2*a*b) /(a+b);
+			mean = (2*a*b) /(a+b);
 
-		System.out.println("두 수의 조화평균은 " +mean);
+			System.out.println("두 수의 조화평균은 " +mean);
 		}catch(NotHarmonicMeanException e){
-			System.out.println("NotHarmonicMeanException입니다.");
+			System.out.println("NotHarmonicMeanException : "+e.getMessage());
 		}
 	}
 }
