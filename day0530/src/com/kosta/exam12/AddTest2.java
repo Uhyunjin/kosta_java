@@ -71,28 +71,9 @@ public class AddTest2 extends JFrame {
 			}
 		});
 	}
-
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//
-//		switch(e.getActionCommand()) {	//눌린 버튼의 글자
-//		
-//		case "Add":
-//			int sum = Integer.parseInt((jtf01.getText()))+Integer.parseInt((jtf02.getText()));	 
-//			jtf03.setText(sum+"");
-//			break;
-//			
-//		case "Clear":
-//			jtf01.setText(null);
-//			jtf02.setText(null);
-//			jtf03.setText(null);
-//			break;
-//		}
-//	}
 	
 	public static void main(String[] args) {
 		
 		new AddTest2();
 	}
-
 }

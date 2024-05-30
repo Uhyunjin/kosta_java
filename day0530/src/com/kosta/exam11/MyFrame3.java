@@ -18,7 +18,7 @@ public class MyFrame3 extends JFrame {
 		add(new JButton("아래"), BorderLayout.SOUTH);
 		add(new JButton("왼쪽"), BorderLayout.WEST);
 		add(new JButton("오른쪽"), BorderLayout.EAST);
-		add(new JButton("가운데"), BorderLayout.CENTER);
+//		add(new JButton("가운데"), BorderLayout.CENTER);
 
 		
 		setSize(500,500);
