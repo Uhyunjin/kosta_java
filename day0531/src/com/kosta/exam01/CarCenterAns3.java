@@ -26,6 +26,7 @@ public class CarCenterAns3 extends JFrame{
 	int total;
 	
 	public void calc() {
+		total=0;
 		for (int i=0;i<jcb.length;i++) {
 			JCheckBox b = jcb[i];
 			if (b.isSelected()) {
@@ -47,10 +48,10 @@ public class CarCenterAns3 extends JFrame{
 		
 		int totalCost=0;
 		map = new LinkedHashMap<String, Integer>();
-		map.put("엔진오일교환", 45000);
-		map.put("자동변속기오일교환", 80000);
-		map.put("에어컨필터교환", 30000);
-		map.put("타이어교환", 100000);
+		map.put("엔진 오일 교환", 45000);
+		map.put("자동 변속기 오일 교환", 80000);
+		map.put("에어컨 필터 교환", 30000);
+		map.put("타이어 교환", 100000);
 		
 //		setLayout(new FlowLayout());
 		
@@ -68,18 +69,10 @@ public class CarCenterAns3 extends JFrame{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {	
-//					for (int i=0;i<jcb.length;i++) {
-//						JCheckBox b = jcb[i];
-//						if (b.isSelected()) {
-//							String item = b.getText();	//수리항목
-//							int price = map.get(item);
-//							total += price;
-//						}
-//					}
-//					jlb_result.setText("총 금액 : "+total);
 					calc();
 				}
 			});
+			i++;
 		}
 		
 		jlb_result = new JLabel("총 금액");

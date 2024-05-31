@@ -26,7 +26,7 @@ public class RepairShop_Map extends JFrame {
 		int tot = 0;
 		for(int i=0; i<jcb.length; i++) {
 			if(jcb[i].isSelected()) {
-				tot += price[i];
+//				tot += price[i];
 			}
 		}
 		
@@ -52,9 +52,10 @@ public class RepairShop_Map extends JFrame {
 		int i=0;
 		while(iter.hasNext()) {
 			String item = iter.next();
+			int price = map.get(item);
 			jcb[i] = new JCheckBox(item);
 			p_center.add(jcb[i]);
-			p_center.add(new JLabel(price[i]+""));
+//			p_center.add(new JLabel(price[i]+""));
 			jcb[i].addActionListener(new ActionListener() {
 				
 				@Override
@@ -63,6 +64,7 @@ public class RepairShop_Map extends JFrame {
 				}
 			});
 		}
+		i++;
 		
 		
 		jlb = new JLabel("                ");
