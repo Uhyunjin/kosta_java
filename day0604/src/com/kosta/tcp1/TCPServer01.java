@@ -28,6 +28,8 @@ public class TCPServer01 {
 					Thread.sleep(200);	//데이터 하나 보낼 때 마다 0.2초 대기
 				}
 				System.out.println("데이터 전송 완료");
+				
+				// 7.사용했던 자원을 닫아준다
 				os.close();
 				socket.close();
 			}
