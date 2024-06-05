@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -38,19 +40,22 @@ public class BasicConnectionClient extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				byte []data;
+				byte []data=new byte[200];
 				try {
-					Socket socket = new Socket("172.30.1.8",9001);
+					Socket socket = new Socket("172.30.1.8",9003);
 					OutputStream os = socket.getOutputStream();
 					data = jtf.getText().getBytes();
 					os.write(data);
+					InputStream is = socket.getInputStream();
+					is.read(data);
+					jta.append(new String(data));
+					jta.append("\n");
+					Arrays.fill(data, (byte)0);
 				} catch (IOException e2) {
 					e2.printStackTrace();
 				}
 			}
 		});
-		
-		
 	}
 	
 	public static void main(String[] args) {
