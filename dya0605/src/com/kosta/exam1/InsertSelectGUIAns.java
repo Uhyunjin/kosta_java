@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 
 import oracle.net.nt.ConnectDescription;
 
-public class InsertSelectGUI extends JFrame{
+public class InsertSelectGUIAns extends JFrame{
 	
 	JTextField jtf_name;
 	JTextField jtf_kor;
@@ -35,35 +35,39 @@ public class InsertSelectGUI extends JFrame{
 	JTable table;
 	String sql;
 	
-	public void selectStudent() {
+	public static final String driver="oracle.jdbc.driver.OracleDriver";
+	public static final String url="jdbc:oracle:thin:@localhost:1521:XE";
+	public static final String username="c##madang";
+	public static final String password="madang";
+	
+	public void loadStudent() {
+		String sql = "select * from student";
+		
 		Connection conn=null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String sql = "select * from student";
 		rowData.clear();
 		
-		
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","c##madang","madang");
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url,username,password);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
 				
-				Vector<String> res = new Vector<String>();
+				Vector<String> row = new Vector<String>();
 				String name = rs.getString(1);
 				String kor= Integer.toString(rs.getInt(2));
 				String eng= Integer.toString(rs.getInt(3));
 				String math= Integer.toString(rs.getInt(4));
 
-				res.add(name);
-				res.add(kor);
-				res.add(eng);
-				res.add(math);
+				row.add(name);
+				row.add(kor);
+				row.add(eng);
+				row.add(math);
 				
-				rowData.add(res);
-//				jta.append(res);
+				rowData.add(row);
 			}
 			table.updateUI();
 			
@@ -80,7 +84,7 @@ public class InsertSelectGUI extends JFrame{
 		}
 	}
 	
-	public InsertSelectGUI() {
+	public InsertSelectGUIAns() {
 		jtf_name = new JTextField(10);
 		jtf_kor = new JTextField(10);
 		jtf_eng = new JTextField(10);
@@ -88,7 +92,6 @@ public class InsertSelectGUI extends JFrame{
 		btn = new JButton("입력");
 		
 		JPanel p1 = new JPanel();
-		p1.setLayout(new FlowLayout());
 		p1.add(new JLabel("이름"));
 		p1.add(jtf_name);
 		p1.add(new JLabel("국어"));
@@ -107,17 +110,13 @@ public class InsertSelectGUI extends JFrame{
 		rowData = new Vector<Vector<String>>();
 		table = new JTable(rowData, colName);
 		
-		JPanel p2 = new JPanel();
+//		JPanel p2 = new JPanel();
 		JScrollPane jsp = new JScrollPane(table);
-		p2.setLayout(new FlowLayout());
-		p2.add(jsp, BorderLayout.CENTER);
+//		p2.add(jsp, BorderLayout.CENTER);
 
-		setLayout(new FlowLayout());
-		add(p1);
-		add(p2);
+		add(p1, BorderLayout.NORTH);
+		add(jsp, BorderLayout.CENTER);
 				
-		// 생성자에서 테이블 조회해서 가져오기
-		selectStudent();
 		
 		//버튼을 누르면 입력 후 다시 테이블 새로고침
 		btn.addActionListener(new ActionListener() {
@@ -132,14 +131,8 @@ public class InsertSelectGUI extends JFrame{
 				int math = Integer.parseInt(jtf_math.getText());
 				
 				try {
-					String sql = "insert into student values('"+name+"',"+kor+","+eng+","+math+")";
-			
-					Class.forName("oracle.jdbc.driver.OracleDriver");
-					
-					String url = "jdbc:oracle:thin:@localhost:1521:XE";
-					String username="c##madang";
-					String password="madang";
-					
+					String sql = "insert into student values('"+name+"',"+kor+","+eng+","+math+")";	
+					Class.forName(driver);
 					conn = DriverManager.getConnection(url,username,password);
 					stmt = conn.createStatement();
 					
@@ -147,6 +140,7 @@ public class InsertSelectGUI extends JFrame{
 					
 					if (re==1) {
 						System.out.println(sql+" 성공");
+						loadStudent();
 					}else {
 						System.out.println("실패");
 					}
@@ -167,9 +161,11 @@ public class InsertSelectGUI extends JFrame{
 					}
 				}
 				
-				selectStudent();
 			}
 		});
+		
+		// 생성자에서 테이블 조회해서 가져오기
+		loadStudent();
 		
 		setVisible(true);
 		setSize(700,300);
@@ -179,7 +175,7 @@ public class InsertSelectGUI extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		new InsertSelectGUI();
+		new InsertSelectGUIAns();
 
 	}
 
