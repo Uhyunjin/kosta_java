@@ -37,10 +37,7 @@ public class TCPChatClient extends JFrame{
 			//생성된 소켓을 통해 입출력 스트림을 생성한다.
 			is = socket.getInputStream();
 			os = socket.getOutputStream();
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -73,14 +70,11 @@ public class TCPChatClient extends JFrame{
 					} catch (Exception e) {
 						System.out.println(e.getMessage());
 					}
-					
 				}
 			}
 		}
 		ClientThread ct = new ClientThread();
 		ct.start();
-		
-		
 		
 		//전송버튼 이벤트
 		btnSend.addActionListener(new ActionListener() {
@@ -101,8 +95,6 @@ public class TCPChatClient extends JFrame{
 		setSize(300,600);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		
 	}
 	
 	public static void main(String[] args) {
