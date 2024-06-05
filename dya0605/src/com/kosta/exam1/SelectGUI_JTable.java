@@ -98,6 +98,8 @@ public class SelectGUI_JTable extends JFrame{
 			}
 		});
 		
+		
+		
 		setVisible(true);
 		setSize(400,300);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
