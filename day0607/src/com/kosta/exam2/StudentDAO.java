@@ -79,4 +79,30 @@ public class StudentDAO {
 		}
 		return list;
 	}
+	
+	public int updateStudent(StudentVO student) {
+		sql = "update student set kor="+student.getKor()
+								+",eng="+student.getEng()
+								+",math="+student.getMath()
+						+" where name='"+student.getName()+"'";
+		int re=-1;
+		
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, username, password);
+			stmt = conn.createStatement();
+			re = stmt.executeUpdate(sql);
+			
+			
+		} catch (Exception e) {
+			e.getMessage();
+		} finally {
+			try {
+				if (stmt!=null) {stmt.close();}
+				if (conn!=null) {conn.close();}
+			} catch (Exception e2) {e2.getMessage();}
+		}
+		
+		return re;
+	}
 }
