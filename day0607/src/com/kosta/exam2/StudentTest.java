@@ -109,7 +109,7 @@ public class StudentTest extends JFrame {
 				StudentDAO dao = new StudentDAO();
 				int re = dao.insertStudent(student);
 				
-				if (re==1) {JOptionPane.showMessageDialog(null, "학생의 정보를 추가하였습니다");}
+				if (re==1) {JOptionPane.showMessageDialog(null, "학생의 정보를 추가하였습니다");loadStudent();}
 				else {JOptionPane.showMessageDialog(null, "실패하였습니다");}
 			}
 		});
