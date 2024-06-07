@@ -72,7 +72,27 @@ public class StudentTest extends JFrame {
 	
 		setVisible(true);
 		setSize(850,300);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);	
+		
+		btnInsert.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String name = jtf_name.getText();
+				int kor = Integer.parseInt(jtf_kor.getText());
+				int eng = Integer.parseInt(jtf_eng.getText());
+				int math = Integer.parseInt(jtf_math.getText());
+				
+				//DAO 객체를 만들어 그 안에 있는 method를 사용하기 위해서
+				//매개변수로 넘겨 줄 studentVO 객체를 만든다.
+				StudentVO student = new StudentVO(name, kor, eng, math);
+				StudentDAO dao = new StudentDAO();
+				int re = dao.insertStudent(student);
+				
+				if (re==1) {JOptionPane.showMessageDialog(null, "학생의 정보를 추가하였습니다");}
+				else {JOptionPane.showMessageDialog(null, "실패하였습니다");}
+			}
+		});
 	}
 	
 	public static void main(String[] args) {

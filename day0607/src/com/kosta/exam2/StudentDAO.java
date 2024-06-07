@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class StudentDAO {
 
-	public final static String driver = "oracle.jdbc.driver.orcledriver";
+	public final static String driver = "oracle.jdbc.driver.OracleDriver";
 	public final static String url = "jdbc:oracle:thin:@localhost:1521:XE";
 	public final static String username = "c##madang";
 	public final static String password = "madang";
@@ -29,14 +29,13 @@ public class StudentDAO {
 		eng=student.getEng();
 		math=student.getMath();
 		
-		sql = "insert into student values('"+name+"',"+kor+","+eng+","+math+",)";
+		sql = "insert into student values('"+name+"',"+kor+","+eng+","+math+")";
 		System.out.println(sql);
 		try {
 			Class.forName(driver);
 			conn=DriverManager.getConnection(url,username,password);
 			stmt=conn.createStatement();
 			re = stmt.executeUpdate(sql);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

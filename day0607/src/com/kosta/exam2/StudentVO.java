@@ -5,6 +5,17 @@ public class StudentVO {
 	private int kor, eng, math;
 	
 	
+	public StudentVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public StudentVO(String name, int kor, int eng, int math) {
+		super();
+		this.name = name;
+		this.kor = kor;
+		this.eng = eng;
+		this.math = math;
+	}
 	public String getName() {
 		return name;
 	}
