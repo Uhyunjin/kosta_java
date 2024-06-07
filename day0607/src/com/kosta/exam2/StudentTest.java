@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -37,9 +38,19 @@ public class StudentTest extends JFrame {
 	
 	//모든 학생의 목록을 읽어와서 JTable에 출력하는 메서드
 	public void loadStudent() {
+		rowData.clear();
 		StudentDAO dao = new StudentDAO();
 		ArrayList<StudentVO> list = dao.listStudent();
 		System.out.println(list);
+		for (StudentVO s : list) {
+			Vector<String> row = new Vector<String>();
+			row.add(s.getName());
+			row.add(s.getEng()+"");
+			row.add(s.getKor()+"");
+			row.add(s.getMath()+"");
+			rowData.add(row);
+		}
+		table.updateUI();
 	}
 
 	
