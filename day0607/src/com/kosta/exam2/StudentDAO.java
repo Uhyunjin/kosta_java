@@ -57,12 +57,11 @@ public class StudentDAO {
 		ResultSet rs = null;
 		try {
 			Class.forName(driver);
-			conn = DriverManager.getConnection(url);
+			conn = DriverManager.getConnection(url, username, password);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
-				rs.next();
 				list.add(new StudentVO(rs.getString(1),
 										rs.getInt(2),
 										rs.getInt(3),

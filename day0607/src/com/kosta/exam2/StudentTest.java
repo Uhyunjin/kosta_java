@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -33,6 +34,13 @@ public class StudentTest extends JFrame {
 	Vector<Vector<String>> rowData;
 	JTable table;
 	String sql;
+	
+	//모든 학생의 목록을 읽어와서 JTable에 출력하는 메서드
+	public void loadStudent() {
+		StudentDAO dao = new StudentDAO();
+		ArrayList<StudentVO> list = dao.listStudent();
+		System.out.println(list);
+	}
 
 	
 	public StudentTest() {
@@ -69,6 +77,7 @@ public class StudentTest extends JFrame {
 
 		add(p1, BorderLayout.NORTH);
 		add(jsp, BorderLayout.CENTER);
+		loadStudent();
 	
 		setVisible(true);
 		setSize(850,300);
@@ -93,6 +102,7 @@ public class StudentTest extends JFrame {
 				else {JOptionPane.showMessageDialog(null, "실패하였습니다");}
 			}
 		});
+		
 	}
 	
 	public static void main(String[] args) {

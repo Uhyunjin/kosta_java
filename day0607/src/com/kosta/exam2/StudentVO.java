@@ -1,6 +1,10 @@
 package com.kosta.exam2;
 
 public class StudentVO {
+	@Override
+	public String toString() {
+		return "StudentVO [name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + "]";
+	}
 	private String name;
 	private int kor, eng, math;
 	
