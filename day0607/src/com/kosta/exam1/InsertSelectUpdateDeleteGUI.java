@@ -208,7 +208,10 @@ public class InsertSelectUpdateDeleteGUI extends JFrame {
 				
 				//삭제하는 명령은 좀 위험한 작업이다보니
 				//무조건 삭제시키기 보다는 한번 확인하는 과정을 거치면 좋을것~
-				
+				if (jtf_name.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "삭제할 학생을 선택하세요");
+					return;	//삭제할 학생을 선택하지 않았기 때문에 여기서 멈추기
+				}
 				int r =JOptionPane.showConfirmDialog(null, "정말로 삭제할까요?", "회원삭제", JOptionPane.YES_NO_OPTION);
 				if (r != 0) {
 					return;
