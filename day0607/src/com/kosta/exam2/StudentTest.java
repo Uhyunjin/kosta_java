@@ -114,6 +114,89 @@ public class StudentTest extends JFrame {
 			}
 		});
 		
+		btnUpdate.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String name = jtf_name.getText();
+				int kor = Integer.parseInt(jtf_kor.getText());
+				int eng = Integer.parseInt(jtf_eng.getText());
+				int math = Integer.parseInt(jtf_math.getText());
+				
+				StudentVO student = new StudentVO(name, kor, eng, math);
+				StudentDAO dao = new StudentDAO();
+				int re = dao.updateStudent(student);
+				
+				if (re > 1) {
+					JOptionPane.showMessageDialog(null, "성공");
+					loadStudent();
+				}else {
+					JOptionPane.showMessageDialog(null, "실패");					
+				}
+			}
+		});
+		
+		table.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				int idx = table.getSelectedRow();
+				Vector<String> row = rowData.get(idx);
+				
+				//jtf에 테이블에서 선택된 데이터를 보여준다.
+				jtf_name.setText(row.get(0));
+				jtf_kor.setText(row.get(1));
+				jtf_eng.setText(row.get(2));
+				jtf_math.setText(row.get(3));
+
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+//		btnUpdate.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				String name = jtf_name.getText();
+//				int kor = Integer.parseInt(jtf_kor.getText());
+//				int eng = Integer.parseInt(jtf_eng.getText());
+//				int math = Integer.parseInt(jtf_math.getText());
+//				StudentVO student = new StudentVO(name, kor, eng, math);
+//				StudentDAO dao = new StudentDAO();
+//				int re = dao.updateStudent(student);
+//				
+//				if (re > 0) {
+//					JOptionPane.showMessageDialog(null, "성공");
+//					loadStudent();
+//				}else {
+//					JOptionPane.showMessageDialog(null, "실패");					
+//				}
+//			}
+//		});
+		
 	}
 	
 	public static void main(String[] args) {
