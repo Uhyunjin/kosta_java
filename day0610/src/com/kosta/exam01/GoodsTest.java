@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -30,6 +29,11 @@ public class GoodsTest extends JFrame {
 	Vector<Vector<String>> rowData;
 	JTable table;
 	
+	int no;
+	String item;
+	int qty;
+	int price;
+	
 	public void loadGoods() {
 		rowData.clear();
 		GoodsDAO dao = new GoodsDAO();
@@ -43,6 +47,15 @@ public class GoodsTest extends JFrame {
 			row.add(g.getPrice()+"");
 			rowData.add(row);
 		}
+		table.updateUI();
+	}
+	
+	//텍스트필드의 입력값을 읽어와서 각각의 변수에 저장하는 메서드
+	public void setData() {
+		no = Integer.parseInt(jtf_no.getText());
+		item = jtf_item.getText();
+		qty = Integer.parseInt(jtf_qty.getText());
+		price = Integer.parseInt(jtf_price.getText());
 	}
 	
 	public GoodsTest(String title) {
@@ -102,10 +115,7 @@ public class GoodsTest extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int no = Integer.parseInt(jtf_no.getText());
-				String item = jtf_item.getText();
-				int qty = Integer.parseInt(jtf_qty.getText());
-				int price = Integer.parseInt(jtf_price.getText());
+				setData();
 				GoodsVO g = new GoodsVO(no, item, qty, price);
 				GoodsDAO dao= new GoodsDAO();
 				int re = dao.insertGoods(g);
@@ -115,6 +125,40 @@ public class GoodsTest extends JFrame {
 					table.updateUI();
 				}else {
 					JOptionPane.showMessageDialog(null, "상품등록에 실패하였습니다.");
+				}
+			}
+		});
+		
+		btnUpdate.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setData();
+				GoodsVO g = new GoodsVO(no,item,qty,price);
+				GoodsDAO dao = new GoodsDAO();
+				int re = dao.updateGoods(g);
+				if (re>0) {
+					JOptionPane.showMessageDialog(null, "상품의 정보를 수정하였습니다");
+					loadGoods();
+				}else {
+					JOptionPane.showMessageDialog(null, "실패");
+				}
+			}
+		});
+		
+		btnDelete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setData();
+//				GoodsVO g = new GoodsVO(no,item,qty,price);
+				GoodsDAO dao = new GoodsDAO();
+				int re = dao.deleteGoods(no);
+				if (re>0) {
+					JOptionPane.showMessageDialog(null, "성공");
+					loadGoods();
+				}else {
+					JOptionPane.showMessageDialog(null, "실패");
 				}
 			}
 		});

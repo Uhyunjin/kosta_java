@@ -13,8 +13,8 @@ public class ConnectionProvider {
 	//static 메서드이며 매개변수는 없고 connection을 반환하는 메서드
 	
 	public static Connection getConnection() {
-		String driver = "oracle.jdbc.drver.OracleDriver";
-		String url = "jdbc:oracle:this:@localhost:1521:XE";
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = "jdbc:oracle:thin:@localhost:1521:XE";
 		String username = "c##madang";
 		String password = "madang";
 		

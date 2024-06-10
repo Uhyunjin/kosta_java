@@ -71,7 +71,7 @@ public class GoodsDAO {
 	public int updateGoods(GoodsVO goods) {
 		int re = -1;
 		String sql = "update goods set item='"+goods.getItem()
-									+"',qyt="+goods.getQty()
+									+"',qty="+goods.getQty()
 									+",price="+goods.getPrice()
 									+" where no="+goods.getNo();
 		Connection conn = null;
@@ -83,14 +83,33 @@ public class GoodsDAO {
 			stmt = conn.createStatement();
 			re = stmt.executeUpdate(sql);
 		} catch (Exception e) {
-			e.getMessage();
+			
+			System.out.println(e.getMessage());
 		}finally {
 			try {
 				ConnectionProvider.close2(conn, stmt);
 		} catch (Exception e2) {
-			// TODO: handle exception
+			
 		}
 	}
+		return re;
+	}
+	
+	//goodsvo 매개변수
+	public int deleteGoods(int no) {
+		int re = -1;
+		String sql = "delete goods where no="+no;
+		Connection conn=null;
+		Statement stmt = null;
+		try {
+			conn=ConnectionProvider.getConnection();
+			stmt=conn.createStatement();
+			re = stmt.executeUpdate(sql);
+		} catch (Exception e) {
+			e.getMessage();
+		}finally {
+			ConnectionProvider.close2(conn, stmt);
+		}
 		
 		return re;
 	}
