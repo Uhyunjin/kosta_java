@@ -1,17 +1,15 @@
 package com.kosta.exam01;
-
-import java.awt.Taskbar.State;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.sql.ConnectionPoolDataSource;
+
+import com.kosta.DB.ConnectionProvider;
+
 public class GoodsDAO {
-	public static String driver		= "oracle.jdbc.driver.OracleDriver";
-	public static String url		= "jdbc:oracle:thin:@localhost:1521:XE";
-	public static String username	= "c##madang";
-	public static String password	= "madang";
 	
 	// 새로운 상품을 등록하기 위한 메소드를 만들어 봅니다.
 	public int insertGoods(GoodsVO g) {
@@ -20,20 +18,15 @@ public class GoodsDAO {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, username, password);
+			
+			conn = ConnectionProvider.getConnection();
 			stmt = conn.createStatement();
 			re = stmt.executeUpdate(sql);
 		}catch (Exception e) {
 			System.out.println("예외발생:"+e.getMessage());
 		}finally {
 			try {
-				if(stmt != null) {
-					stmt.close();
-				}
-				if(conn != null) {
-					conn.close();
-				}
+				ConnectionProvider.close2(conn, stmt);
 			}catch (Exception e) {				
 			}
 		}		
@@ -47,8 +40,9 @@ public class GoodsDAO {
 		ResultSet rs = null;
 		ArrayList<GoodsVO> list = new ArrayList<GoodsVO>();
 		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, username, password);
+//			Class.forName(driver);
+//			conn = DriverManager.getConnection(url, username, password);
+			conn = ConnectionProvider.getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
@@ -63,15 +57,7 @@ public class GoodsDAO {
 			e.getMessage();
 		}finally {
 			try {
-					if (rs!=null) {
-						rs.close();
-					}
-					if (stmt!=null) {
-						stmt.close();
-					}
-					if (conn!=null) {
-						conn.close();
-					}
+				ConnectionProvider.close(conn, stmt, rs);
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}
@@ -91,20 +77,16 @@ public class GoodsDAO {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url,username,password);
+//			Class.forName(driver);
+//			conn = DriverManager.getConnection(url,username,password);
+			conn = ConnectionProvider.getConnection();
 			stmt = conn.createStatement();
 			re = stmt.executeUpdate(sql);
 		} catch (Exception e) {
 			e.getMessage();
 		}finally {
 			try {
-				if (stmt!=null) {
-					stmt.close();
-				}
-				if (conn!=null) {
-					conn.close();
-				}
+				ConnectionProvider.close2(conn, stmt);
 		} catch (Exception e2) {
 			// TODO: handle exception
 		}
