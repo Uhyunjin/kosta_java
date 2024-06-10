@@ -1,5 +1,6 @@
 package com.kosta.exam01;
 
+import java.awt.Taskbar.State;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -75,9 +76,41 @@ public class GoodsDAO {
 				// TODO: handle exception
 			}
 		}
-		
 		return list;
+	}
+	
+	//상품 수정을 위한 메서드 정의
+	//매개변수 : GoodsVO
+	//반환값 : int
+	public int updateGoods(GoodsVO goods) {
+		int re = -1;
+		String sql = "update goods set item='"+goods.getItem()
+									+"',qyt="+goods.getQty()
+									+",price="+goods.getPrice()
+									+" where no="+goods.getNo();
+		Connection conn = null;
+		Statement stmt = null;
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url,username,password);
+			stmt = conn.createStatement();
+			re = stmt.executeUpdate(sql);
+		} catch (Exception e) {
+			e.getMessage();
+		}finally {
+			try {
+				if (stmt!=null) {
+					stmt.close();
+				}
+				if (conn!=null) {
+					conn.close();
+				}
+		} catch (Exception e2) {
+			// TODO: handle exception
+		}
+	}
 		
+		return re;
 	}
 
 }
